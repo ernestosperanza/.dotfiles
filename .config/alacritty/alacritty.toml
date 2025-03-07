@@ -1,5 +1,5 @@
 [general]
-import = ["~/.config/alacritty/themes/themes/tokyo_night.toml"]
+import = ["~/.config/alacritty/alacritty-themes/tokyo_night.toml"]
 
 [window]
 padding.x = 10
