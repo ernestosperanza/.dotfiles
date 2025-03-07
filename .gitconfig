@@ -1,0 +1,9 @@
+[user]
+	name = ernestosperanza
+	email = 29267672+ernestosperanza@users.noreply.github.com
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[push]
+	autosetupremote = true
