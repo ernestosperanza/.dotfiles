@@ -13,7 +13,17 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
     'exec-and-forget borders active_color=0xff88c0d0 inactive_color=0xff4c566a width=5.0',
+    'exec-and-forget open -a Obsidian',
+    'exec-and-forget open -a Alacritty',
+    'exec-and-forget open -a Vivaldi',
+    'exec-and-forget open -a Code',
+    'exec-and-forget open -a Spotify',
+    'exec-and-forget open -a Slack',
+    'exec-and-forget open -a WhatsApp',
 ]
+
+# 9: Slack Workspace
+# 10: Whatsapp Workspace
 
 # Start AeroSpace at login
 start-at-login = true
@@ -73,6 +83,13 @@ outer.right = 2
 
 # binding for open apps 
 alt-enter = 'exec-and-forget open -a Alacritty'
+ctrl-shift-1 = 'exec-and-forget open -a Obsidian'
+ctrl-shift-4 = 'exec-and-forget open -a Vivaldi'
+ctrl-shift-5 = 'exec-and-forget open -a Code'
+ctrl-shift-8 = 'exec-and-forget open -a Spotify'
+ctrl-shift-9 = 'exec-and-forget open -a Slack'
+ctrl-shift-0 = 'exec-and-forget open -a WhatsApp'
+
 
 # i3 wraps focus by default
 alt-j = 'focus --boundaries-action wrap-around-the-workspace left'
@@ -136,42 +153,51 @@ l = 'resize width +50'
 enter = 'mode main'
 esc = 'mode main'
 
-[[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
-run = "move-node-to-workspace 4"
-
-[[on-window-detected]]
-if.app-id = 'com.microsoft.VSCode'
-run = "move-node-to-workspace 3"
-
-[[on-window-detected]]
-if.app-id = 'org.alacritty'
-run = "move-node-to-workspace 2"
-
+# 1: Notes Workspace
 [[on-window-detected]]
 if.app-id = 'com.apple.Notes'
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
-if.app-id = 'com.dreamer.Habits'
-run = "move-node-to-workspace 1"
+if.app-id = 'com.utmapp.UTM'
+run = "move-node-to-workspace 2"
 
+# 3: Terminal Workspace
+[[on-window-detected]]
+if.app-id = 'org.alacritty'
+run = "move-node-to-workspace 3"
+
+# 4: Browser Workspace
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = "move-node-to-workspace 4"
+
+# 5: Editor Workspace
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = "move-node-to-workspace 5"
+
+# 6: Notes Workspace
 [[on-window-detected]]
 if.app-id = 'notion.id'
 run = "move-node-to-workspace 6"
 
+# 7: Zoom Workspace
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
 run = "move-node-to-workspace 7"
 
+# 8: Spotify Workspace
 [[on-window-detected]]
-if.app-id = 'com.utmapp.UTM'
-run = "move-node-to-workspace 5"
+if.app-id = 'com.spotify.client'
+run = "move-node-to-workspace 8"
 
+# 9: Slack Workspace
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = "move-node-to-workspace 9"
 
+# 10: Whatsapp Workspace
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
 run = "move-node-to-workspace 10"

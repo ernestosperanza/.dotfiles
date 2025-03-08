@@ -1,23 +1,32 @@
 tap "homebrew/bundle"
 tap "nikitabobko/tap"
-# Modern, maintained replacement for ls
-brew "eza"
-# Distributed revision control system
-brew "git"
-# Fast, highly customisable system info script
-brew "neofetch"
-# Theme for zsh
-brew "powerlevel10k"
-# Fish-like fast/unobtrusive autosuggestions for zsh
-brew "zsh-autosuggestions"
-# Fish shell like syntax highlighting for zsh
-brew "zsh-syntax-highlighting"
-# AeroSpace is an i3-like tiling window manager for macOS
-cask "aerospace@0.12.0"
-# GPU-accelerated terminal emulator
-cask "alacritty"
-cask "font-meslo-lg-nerd-font"
 
+brew "eza"
+brew "git"
+brew "neofetch"
+brew "powerlevel10k"
+brew "stow"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+
+cask "aerospace"
+cask "aerospace@0.12.0"
+cask "alacritty"
+cask "docker"
+cask "font-meslo-lg-nerd-font"
+cask "keka"
+cask "ledger-live"
+cask "logitune"
+cask "obsidian"
+cask "openvpn-connect"
+cask "postman"
+cask "slack"
+cask "spotify"
+cask "utm"
+cask "visual-studio-code"
+cask "vivaldi"
+cask "whatsapp"
+cask "zoom"
 
 vscode "bierner.markdown-mermaid"
 vscode "charliermarsh.ruff"
