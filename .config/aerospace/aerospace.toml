@@ -5,7 +5,6 @@ after-startup-command = [
     'exec-and-forget open -a Obsidian',
     'exec-and-forget open -a Alacritty',
     'exec-and-forget open -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome',
-    #'exec-and-forget open -a Code', TextEditor
     'exec-and-forget open -a Spotify',
     'exec-and-forget open -a Ferdium',
     'move-node-to-workspace 3',
@@ -48,7 +47,6 @@ alt-w = 'layout h_accordion'               # 'layout tabbed' in i3
 alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
 alt-shift-q = 'close'
 alt-shift-c = 'reload-config'
-alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 
 # Workspace 1: Notes
 alt-1 = 'workspace 1'
@@ -118,12 +116,12 @@ run = "move-node-to-workspace 2"
 # Workspace 3: Browser 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-run = "move-node-to-workspace 4"
+run = "move-node-to-workspace 3"
 
 # Workspace 4: Editor Workspace
-# [[on-window-detected]]
-# if.app-id = ''
-# run = "move-node-to-workspace 4"
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = "move-node-to-workspace 4"
 
 # Workspace 5: ?? 
 # Workspace 6: ??
