@@ -44,5 +44,10 @@ Integrate other cloud services into your Dotfiles process (Dropbox, Google Drive
 Find inspiration and examples in other Dotfiles repositories at dotfiles.github.io.
 And last, but hopefully not least, take my course, Dotfiles from Start to Finish-ish!
 
-
 para hacer andar el simlink `stow .`
+
+TODO:
+
+final brewfile
+install code editor
+fix aerospace setup

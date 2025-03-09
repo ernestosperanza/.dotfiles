@@ -4,7 +4,7 @@ after-startup-command = [
     'exec-and-forget borders active_color=0xff88c0d0 inactive_color=0xff4c566a width=5.0',
     'exec-and-forget open -a Obsidian',
     'exec-and-forget open -a Alacritty',
-    #'exec-and-forget open -a Vivaldi', Browser
+    'exec-and-forget open -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome',
     #'exec-and-forget open -a Code', TextEditor
     'exec-and-forget open -a Spotify',
     'exec-and-forget open -a Ferdium',
@@ -23,12 +23,12 @@ default-root-container-orientation = 'auto'
 preset = 'qwerty'
 
 [gaps]
-inner.horizontal = 0
-inner.vertical = 0
-outer.left = 0
-outer.bottom = 0
-outer.top = 0
-outer.right = 0
+inner.horizontal = 2
+inner.vertical = 2
+outer.left = 2
+outer.bottom = 2
+outer.top = 2
+outer.right = 2
 
 [mode.main.binding]
 alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
@@ -62,17 +62,16 @@ alt-shift-2 = 'move-node-to-workspace 2'
 # 3: Terminal Workspace
 alt-3 = 'workspace 3'
 alt-shift-3 = 'move-node-to-workspace 3'
-ctrl-enter = 'exec-and-forget open -a Alacritty'
+alt-enter = 'exec-and-forget open -a Alacritty'
 
 # 4: Browser Workspace
 alt-4 = 'workspace 4'
 alt-shift-4 = 'move-node-to-workspace 4'
-# ctrl-shift-4 = 'exec-and-forget open -a Vivaldi' New Browser
+ctrl-shift-4 = 'exec-and-forget open -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 
 # 5: Editor Workspace
 alt-5 = 'workspace 5'
 alt-shift-5 = 'move-node-to-workspace 5'
-# ctrl-shift-5 = 'exec-and-forget open -a Code' New Text Editor
 
 # 6: Workspace
 alt-6 = 'workspace 6'
@@ -121,9 +120,9 @@ if.app-id = 'org.alacritty'
 run = "move-node-to-workspace 3"
 
 # 4: Browser Workspace
-# [[on-window-detected]]
-# if.app-id = 'company.thebrowser.Browser'
-# run = "move-node-to-workspace 4"
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = "move-node-to-workspace 4"
 
 # 5: Editor Workspace
 # [[on-window-detected]]
