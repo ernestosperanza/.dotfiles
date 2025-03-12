@@ -45,3 +45,6 @@ Find inspiration and examples in other Dotfiles repositories at dotfiles.github.
 And last, but hopefully not least, take my course, Dotfiles from Start to Finish-ish!
 
 para hacer andar el simlink `stow .`
+
+
+https://github.com/addy-dclxvi/i3-starterpack
