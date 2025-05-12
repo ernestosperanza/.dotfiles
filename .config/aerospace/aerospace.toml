@@ -2,10 +2,10 @@ after-login-command = []
 
 after-startup-command = [
     'exec-and-forget borders active_color=0xff88c0d0 inactive_color=0xff4c566a width=5.0',
-    'exec-and-forget open -a Obsidian',
+    'exec-and-forget open -a Notion',
     'exec-and-forget open -a Alacritty',
-    'exec-and-forget open -a Zen',
-    'exec-and-forget open -a Spotify',
+    'exec-and-forget open -a Arc',
+    'exec-and-forget open -a com.microsoft.VSCode',
     'workspace 3',
 ]
 
@@ -50,7 +50,7 @@ alt-shift-c = 'reload-config'
 # Workspace 1: Notes
 alt-1 = 'workspace 1'
 alt-shift-1 = 'move-node-to-workspace 1'
-ctrl-shift-1 = 'exec-and-forget open -a Obsidian'
+ctrl-shift-1 = 'exec-and-forget open -a Notion'
 
 # Workspace 2: Terminal
 alt-2 = 'workspace 2'
@@ -60,12 +60,12 @@ alt-enter = 'exec-and-forget open -a Alacritty'
 # Workspace 3: Browser
 alt-3 = 'workspace 3'
 alt-shift-3 = 'move-node-to-workspace 3'
-ctrl-shift-3 = 'exec-and-forget open -a Zen'
+ctrl-shift-3 = 'exec-and-forget open -a Arc'
 
 # Workspace 4: Editor
 alt-4 = 'workspace 4'
 alt-shift-4 = 'move-node-to-workspace 4'
-
+ctrl-shift-4 = 'exec-and-forget open -a "/Applications/Visual Studio Code.app"'
 
 # Workspace 5: ??
 alt-5 = 'workspace 5'
@@ -103,7 +103,7 @@ esc = 'mode main'
 
 # Workspace 1: Notes
 [[on-window-detected]]
-if.app-id = 'md.obsidian'
+if.app-id = 'notion.id'
 run = "move-node-to-workspace 1"
 
 # Workspace 2: Terminal 
@@ -113,7 +113,7 @@ run = "move-node-to-workspace 2"
 
 # Workspace 3: Browser 
 [[on-window-detected]]
-if.app-id = 'app.zen-browser.zen'
+if.app-id = 'company.thebrowser.Browser'
 run = "move-node-to-workspace 3"
 
 # Workspace 4: Editor Workspace
@@ -121,19 +121,18 @@ run = "move-node-to-workspace 3"
 if.app-id = 'com.microsoft.VSCode'
 run = "move-node-to-workspace 4"
 
-# Workspace 5: ?? 
-# Workspace 6: ??
-
-# Workspace 7: Zoom 
+# Workspace 5: Zoom
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
-run = "move-node-to-workspace 7"
+run = "move-node-to-workspace 5"
 
-# Workspace 8: VM
+# Workspace 6: VM
 [[on-window-detected]]
 if.app-id = 'com.utmapp.UTM'
-run = "move-node-to-workspace 8"
+run = "move-node-to-workspace 6"
 
+# Workspace 7: ??
+# Workspace 8: ??
 # Workspace 9: Spotify 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
@@ -145,8 +144,8 @@ run = "move-node-to-workspace 9"
 3 = 'main'
 4 = 'main'
 5 = 'main'
+6 = 'main'
 
-6 = 'secondary'
 7 = 'secondary'
 8 = 'secondary'
 9 = 'secondary'
