@@ -39,9 +39,19 @@
 | 2         | Terminal                                         |
 | 3         | Browser                                          |
 | 4         | Code editor                                      |
-| 5         | ??                                               |
-| 6         | ??                                               |
-| 7         | Zoom                                             |
-| 8         | VM                                               |
+| 5         | Zoom                                             |
+| 6         | VM                                               |
+| 7         | ??                                               |
+| 8         | ??                                               |
 | 9         | Spotify                                          |
-| 10        | Ferdium (Whatsapp \| Email \| Slack \| Calendar) |
+
+## Useful brew commands
+
+```bash
+# To list the apps
+brew list
+# How to create the bundle
+cd ~/.dotfiles && brew bundle --global --force
+# To install the brew bundle
+brew bundle --file ~/.dotfiles/Brewfile
+```

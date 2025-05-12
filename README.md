@@ -1,50 +1,14 @@
 # .dotfiles
 
-Steps to bootstrap a new Mac
-Install Apple's Command Line Tools, which are prerequisites for Git and Homebrew.
-xcode-select --install
-Clone repo into new hidden directory.
+## Steps to bootstrap a new Mac
 
-## Use SSH (if set up)...
+### Copy and paste this on the console
 
-git clone git@github.com:eieioxyz/Beyond-Dotfiles-in-100-Seconds.git ~/.dotfiles
+### Or run the steps manually
 
-## ...or use HTTPS and switch remotes later.
-
-git clone https://github.com/eieioxyz/Beyond-Dotfiles-in-100-Seconds.git ~/.dotfiles
-Create symlinks in the Home directory to the real files in the repo.
-
-## There are better and less manual ways to do this;
-## investigate install scripts and bootstrapping tools.
-
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-Install Homebrew, followed by the software listed in the Brewfile.
-
-## These could also be in an install script.
-
-## Install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-## Then pass in the Brewfile location...
-
-brew bundle --file ~/.dotfiles/Brewfile
-
-## ...or move to the directory first.
-
-cd ~/.dotfiles && brew bundle
-TODO List
-Learn how to use defaults to record and restore System Preferences and other macOS configurations.
-Organize these growing steps into multiple script files.
-Automate symlinking and run script files with a bootstrapping tool like Dotbot.
-Revisit the list in .zshrc to customize the shell.
-Make a checklist of steps to decommission your computer before wiping your hard drive.
-Create a bootable USB installer for macOS.
-Integrate other cloud services into your Dotfiles process (Dropbox, Google Drive, etc.).
-Find inspiration and examples in other Dotfiles repositories at dotfiles.github.io.
-And last, but hopefully not least, take my course, Dotfiles from Start to Finish-ish!
-
-para hacer andar el simlink `stow .`
-
-
-https://github.com/addy-dclxvi/i3-starterpack
+1. Install Apple's Command Line Tools, which are prerequisites for Git and Homebrew. `xcode-select --install`
+2. Instal brew `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+3. Install git `brew install git`
+4. Clone repo into home folder `git clone https://github.com/ernestosperanza/.dotfiles.git`
+5. Install the bundle with brew `brew bundle --file Brewfile`
+6. Simlink with `stow .` (just run it from this folder)
