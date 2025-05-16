@@ -7,3 +7,11 @@
 	rebase = true
 [push]
 	autosetupremote = true
+[core]
+	editor = code --wait
+[alias]
+    st = status -s
+    conf = config --global --edit
+    cm = commit 
+	sw = switch
+    rh = reset HEAD
