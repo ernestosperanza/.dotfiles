@@ -1,152 +1,119 @@
-after-login-command = []
+# aerospace.toml - Hyper Key Edition
 
+# --- CONFIGURACIÓN DE ARRANQUE ---
+start-at-login = true
 after-startup-command = [
     'exec-and-forget borders active_color=0xff88c0d0 inactive_color=0xff4c566a width=5.0',
-    'exec-and-forget open -a Notion',
-    'exec-and-forget open -a Alacritty',
-    'exec-and-forget open -a Arc',
-    'exec-and-forget open -a com.microsoft.VSCode',
-    'workspace 3',
 ]
 
-start-at-login = true
+# --- COMPORTAMIENTO DEL RATÓN ---
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# --- CONFIGURACIÓN DE CONTENEDORES ---
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding = 0
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 
+# --- MAPEO DE TECLADO ---
 [key-mapping]
 preset = 'qwerty'
 
+# --- GAPS (ESPACIADO) ---
 [gaps]
-inner.horizontal = 2
-inner.vertical = 2
-outer.left = 2
-outer.bottom = 2
-outer.top = 2
-outer.right = 2
+inner.horizontal = 5
+inner.vertical = 5
+outer.left = 5
+outer.bottom = 5
+outer.top = 5
+outer.right = 5
 
 [mode.main.binding]
-alt-j = 'focus --boundaries-action wrap-around-the-workspace left'
-alt-k = 'focus --boundaries-action wrap-around-the-workspace down'
-alt-l = 'focus --boundaries-action wrap-around-the-workspace up'
-alt-semicolon = 'focus --boundaries-action wrap-around-the-workspace right'
+# --- MOVIMIENTO DE FOCO (Vim Style) ---
+# Hyper + H/J/K/L
+cmd-alt-ctrl-shift-h = 'focus left'
+cmd-alt-ctrl-shift-j = 'focus down'
+cmd-alt-ctrl-shift-k = 'focus up'
+cmd-alt-ctrl-shift-l = 'focus right'
 
-alt-shift-j = 'move left'
-alt-shift-k = 'move down'
-alt-shift-l = 'move up'
-alt-shift-semicolon = 'move right'
+# --- MOVER VENTANAS ---
+# Hyper + A/S/W/D
+cmd-alt-ctrl-shift-a = 'move left'
+cmd-alt-ctrl-shift-s = 'move down'
+cmd-alt-ctrl-shift-w = 'move up'
+cmd-alt-ctrl-shift-d = 'move right'
 
-alt-f = 'fullscreen'
-alt-r = 'mode resize'
-alt-s = 'layout v_accordion'               # 'layout stacking' in i3
-alt-w = 'layout h_accordion'               # 'layout tabbed' in i3
-alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
-alt-shift-q = 'close'
-alt-shift-c = 'reload-config'
+# --- GESTIÓN DE VENTANAS ---
+cmd-alt-ctrl-shift-f = 'fullscreen'
+cmd-alt-ctrl-shift-r = 'mode resize'
+cmd-alt-ctrl-shift-q = 'close' 
+cmd-alt-ctrl-shift-tab = 'workspace-back-and-forth'
+cmd-alt-ctrl-shift-semicolon = 'reload-config'
 
-# Workspace 1: Notes
-alt-1 = 'workspace 1'
+# --- WORKSPACES (Hyper + Número) ---
+cmd-alt-ctrl-shift-1 = 'workspace 1'
+cmd-alt-ctrl-shift-2 = 'workspace 2'
+cmd-alt-ctrl-shift-3 = 'workspace 3'
+cmd-alt-ctrl-shift-4 = 'workspace 4'
+cmd-alt-ctrl-shift-5 = 'workspace 5'
+cmd-alt-ctrl-shift-6 = 'workspace 6'
+cmd-alt-ctrl-shift-7 = 'workspace 7'
+cmd-alt-ctrl-shift-8 = 'workspace 8'
+cmd-alt-ctrl-shift-9 = 'workspace 9'
+
+# --- MOVER VENTANAS A WORKSPACES ---
 alt-shift-1 = 'move-node-to-workspace 1'
-ctrl-shift-1 = 'exec-and-forget open -a Notion'
-
-# Workspace 2: Terminal
-alt-2 = 'workspace 2'
 alt-shift-2 = 'move-node-to-workspace 2'
-alt-enter = 'exec-and-forget open -a Alacritty'
-
-# Workspace 3: Browser
-alt-3 = 'workspace 3'
 alt-shift-3 = 'move-node-to-workspace 3'
-ctrl-shift-3 = 'exec-and-forget open -a Arc'
-
-# Workspace 4: Editor
-alt-4 = 'workspace 4'
 alt-shift-4 = 'move-node-to-workspace 4'
-ctrl-shift-4 = 'exec-and-forget open -a "/Applications/Visual Studio Code.app"'
-
-# Workspace 5: ??
-alt-5 = 'workspace 5'
 alt-shift-5 = 'move-node-to-workspace 5'
-
-# Workspace 6: ??
-alt-6 = 'workspace 6'
 alt-shift-6 = 'move-node-to-workspace 6'
-
-# Workspace 7: Zoom
-alt-7 = 'workspace 7'
 alt-shift-7 = 'move-node-to-workspace 7'
-
-# Workspace 8: VM
-alt-8 = 'workspace 8'
 alt-shift-8 = 'move-node-to-workspace 8'
-
-# Workspace 9: Spotify 
-alt-9 = 'workspace 9'
 alt-shift-9 = 'move-node-to-workspace 9'
-ctrl-shift-9 = 'exec-and-forget open -a Spotify'
 
-# Workspace 10: Multi-app
-alt-0 = 'workspace 10'
-alt-shift-0 = 'move-node-to-workspace 10'
+# --- REGLAS INTELIGENTES (Casa vs Trabajo) ---
 
-[mode.resize.binding]
-j = 'resize width -50'
-k = 'resize height +50'
-l = 'resize height -50'
-semicolon = 'resize width +50'
-enter = 'mode main'
-esc = 'mode main'
-
-
-# Workspace 1: Notes
+# Workspace 1: Notas
 [[on-window-detected]]
 if.app-id = 'notion.id'
 run = "move-node-to-workspace 1"
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = "move-node-to-workspace 1"
 
-# Workspace 2: Terminal 
+# Workspace 2: Terminales (Alacritty / iTerm2)
 [[on-window-detected]]
 if.app-id = 'org.alacritty'
 run = "move-node-to-workspace 2"
+[[on-window-detected]]
+if.app-id = 'com.googlecode.iterm2'
+run = "move-node-to-workspace 2"
 
-# Workspace 3: Browser 
+# Workspace 3: Navegadores (Arc / Zen / Chrome)
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
 run = "move-node-to-workspace 3"
+[[on-window-detected]]
+if.app-id = 'org.mozilla.zen'
+run = "move-node-to-workspace 3"
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = "move-node-to-workspace 3"
 
-# Workspace 4: Editor Workspace
+# Workspace 4: Código (VSCode / Cursor / Antigravity)
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
 run = "move-node-to-workspace 4"
-
-# Workspace 5: Zoom
 [[on-window-detected]]
-if.app-id = 'us.zoom.xos'
-run = "move-node-to-workspace 5"
-
-# Workspace 6: VM
+if.app-id = 'com.antigravity.app' # Verificar ID real
+run = "move-node-to-workspace 4"
 [[on-window-detected]]
-if.app-id = 'com.utmapp.UTM'
-run = "move-node-to-workspace 6"
+if.app-id = 'com.todesktop.230313mzl4w4u92'
+run = "move-node-to-workspace 4"
 
-# Workspace 7: ??
-# Workspace 8: ??
-# Workspace 9: Spotify 
+# Workspace 9: Música
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = "move-node-to-workspace 9"
-
-[workspace-to-monitor-force-assignment]
-1 = 'main'
-2 = 'main'
-3 = 'main'
-4 = 'main'
-5 = 'main'
-6 = 'main'
-
-7 = 'secondary'
-8 = 'secondary'
-9 = 'secondary'
-10 = 'secondary'
