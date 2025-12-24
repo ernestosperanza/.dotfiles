@@ -62,58 +62,41 @@ cmd-alt-ctrl-shift-7 = 'workspace 7'
 cmd-alt-ctrl-shift-8 = 'workspace 8'
 cmd-alt-ctrl-shift-9 = 'workspace 9'
 
-# --- MOVER VENTANAS A WORKSPACES ---
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
-alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-5 = 'move-node-to-workspace 5'
-alt-shift-6 = 'move-node-to-workspace 6'
-alt-shift-7 = 'move-node-to-workspace 7'
-alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 9'
+# --- IR MOVE MODE ---
+cmd-alt-ctrl-shift-m = 'mode move'
 
-# --- REGLAS INTELIGENTES (Casa vs Trabajo) ---
+# --- Lanzar app con un comando --- 
+cmd-alt-ctrl-shift-b = "exec-and-forget osascript -e 'tell application \"Google Chrome\" to make new window'"
+cmd-alt-ctrl-shift-t ="exec-and-forget osascript -e 'tell application \"iTerm\" to create window with default profile'"
 
+ # b = browser, t = terminal, n=notes
+# c=maybe coms?·
 # Workspace 1: Notas
-[[on-window-detected]]
-if.app-id = 'notion.id'
-run = "move-node-to-workspace 1"
-[[on-window-detected]]
-if.app-id = 'md.obsidian'
-run = "move-node-to-workspace 1"
-
-# Workspace 2: Terminales (Alacritty / iTerm2)
-[[on-window-detected]]
-if.app-id = 'org.alacritty'
-run = "move-node-to-workspace 2"
+# Workspace 2: Term
 [[on-window-detected]]
 if.app-id = 'com.googlecode.iterm2'
 run = "move-node-to-workspace 2"
 
-# Workspace 3: Navegadores (Arc / Zen / Chrome)
-[[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
-run = "move-node-to-workspace 3"
-[[on-window-detected]]
-if.app-id = 'org.mozilla.zen'
-run = "move-node-to-workspace 3"
+# Workspace 3: Browser
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = "move-node-to-workspace 3"
-
-# Workspace 4: Código (VSCode / Cursor / Antigravity)
-[[on-window-detected]]
-if.app-id = 'com.microsoft.VSCode'
-run = "move-node-to-workspace 4"
-[[on-window-detected]]
-if.app-id = 'com.antigravity.app' # Verificar ID real
-run = "move-node-to-workspace 4"
-[[on-window-detected]]
-if.app-id = 'com.todesktop.230313mzl4w4u92'
-run = "move-node-to-workspace 4"
 
 # Workspace 9: Música
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = "move-node-to-workspace 9"
+
+# --- MOVER VENTANAS A WORKSPACES (Hyper + Numero) ---
+[mode.move.binding]
+cmd-alt-ctrl-shift-1 = ['move-node-to-workspace 1', 'mode main']
+cmd-alt-ctrl-shift-2 = ['move-node-to-workspace 2', 'mode main']
+cmd-alt-ctrl-shift-3 = ['move-node-to-workspace 3', 'mode main']
+cmd-alt-ctrl-shift-4 = ['move-node-to-workspace 4', 'mode main']
+cmd-alt-ctrl-shift-5 = ['move-node-to-workspace 5', 'mode main']
+cmd-alt-ctrl-shift-6 = ['move-node-to-workspace 6', 'mode main']
+cmd-alt-ctrl-shift-7 = ['move-node-to-workspace 7', 'mode main']
+cmd-alt-ctrl-shift-8 = ['move-node-to-workspace 8', 'mode main']
+cmd-alt-ctrl-shift-9 = ['move-node-to-workspace 9', 'mode main']
+esc = 'mode main'
+
