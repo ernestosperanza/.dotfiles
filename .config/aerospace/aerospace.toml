@@ -46,7 +46,6 @@ cmd-alt-ctrl-shift-d = 'move right'
 
 # --- GESTIÓN DE VENTANAS ---
 cmd-alt-ctrl-shift-f = 'fullscreen'
-cmd-alt-ctrl-shift-r = 'mode resize'
 cmd-alt-ctrl-shift-q = 'close' 
 cmd-alt-ctrl-shift-tab = 'workspace-back-and-forth'
 cmd-alt-ctrl-shift-semicolon = 'reload-config'
@@ -69,23 +68,97 @@ cmd-alt-ctrl-shift-m = 'mode move'
 cmd-alt-ctrl-shift-b = "exec-and-forget osascript -e 'tell application \"Google Chrome\" to make new window'"
 cmd-alt-ctrl-shift-t ="exec-and-forget osascript -e 'tell application \"iTerm\" to create window with default profile'"
 
- # b = browser, t = terminal, n=notes
-# c=maybe coms?·
-# Workspace 1: Notas
-# Workspace 2: Term
+
+# --- REGLAS DE ASIGNACIÓN DE APPS ---
+
+# [1] PLANIFICACIÓN
+[[on-window-detected]]
+if.app-id = 'com.culturedcode.ThingsMac'
+run = "move-node-to-workspace 1"
+
+# [2] DESARROLLO
 [[on-window-detected]]
 if.app-id = 'com.googlecode.iterm2'
 run = "move-node-to-workspace 2"
 
-# Workspace 3: Browser
+# [3] NAVEGACIÓN (SOLO CHROME)
+# Chrome: Aislado para gestión de pestañas pesadas
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = "move-node-to-workspace 3"
 
-# Workspace 9: Música
+# [4] HERRAMIENTAS DE SOPORTE & REF
+# Apple Notes: Documentación y apuntes
+[[on-window-detected]]
+if.app-id = 'com.apple.Notes'
+run = "move-node-to-workspace 4"
+
+# Preview: Para leer PDFs sin tapar el código
+[[on-window-detected]]
+if.app-id = 'com.apple.Preview'
+run = "move-node-to-workspace 4"
+
+# Finder: Gestión de archivos
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = "move-node-to-workspace 4"
+
+# Postman: Si usas para probar APIs
+[[on-window-detected]]
+if.app-id = 'com.postmanlabs.mac'
+run = "move-node-to-workspace 4"
+
+# TablePlus / DB Tools (ajusta el ID si usas otro)
+[[on-window-detected]]
+if.app-id = 'com.tinyapp.TablePlus'
+run = "move-node-to-workspace 4"
+
+# [5] COMUNICACIÓN (TRABAJO)
+# Slack
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = "move-node-to-workspace 5"
+
+# [6] COMUNICACIÓN (PERSONAL)
+# WhatsApp
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = "move-node-to-workspace 6"
+
+# [7] VIRTUALIZACIÓN
+# UTM (Windows)
+[[on-window-detected]]
+if.app-id = 'com.utmapp.UTM'
+run = "move-node-to-workspace 7"
+
+# [8] COMUNIDAD / HOBBIES
+# Discord
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = "move-node-to-workspace 8"
+
+# [9] MEDIA
+# Spotify
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = "move-node-to-workspace 9"
+
+# --- FLOTANTES (UTILIDADES) ---
+# System Settings: Flotante
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+# 1Password: Flotante
+[[on-window-detected]]
+if.app-id = 'com.1password.1password'
+run = 'layout floating'
+
+# Calculadora: Flotante
+[[on-window-detected]]
+if.app-id = 'com.apple.calculator'
+run = 'layout floating'
+
 
 # --- MOVER VENTANAS A WORKSPACES (Hyper + Numero) ---
 [mode.move.binding]
