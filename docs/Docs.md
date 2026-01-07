@@ -51,7 +51,7 @@
 # To list the apps
 brew list
 # How to create the bundle
-cd ~/.dotfiles && brew bundle --global --force
+cd ~/.dotfiles && brew bundle dump --force
 # To install the brew bundle
-brew bundle --file ~/.dotfiles/Brewfile
+brew bundle install
 ```
