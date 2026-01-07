@@ -38,3 +38,6 @@ alias ls="eza --icons=always"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 export PATH=$PATH:$HOME/.local/opt/go/bin
+
+# Setup the correct keygen for yubikey
+export PATH="/opt/homebrew/opt/openssh/bin:$PATH"
