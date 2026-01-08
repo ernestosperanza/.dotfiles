@@ -1,6 +1,5 @@
 tap "mediosz/tap"
 tap "nikitabobko/tap"
-
 brew "cmake"
 brew "cocoapods"
 brew "eza"
@@ -25,8 +24,8 @@ brew "wget"
 brew "xcodegen"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
-
 cask "1password"
+cask "1password-cli"
 cask "aerospace"
 cask "arc"
 cask "betterdisplay"
@@ -42,6 +41,7 @@ cask "karabiner-elements"
 cask "keka"
 cask "ledger-wallet"
 cask "logitune"
+cask "obsidian"
 cask "postman"
 cask "raycast"
 cask "spotify"
@@ -51,5 +51,4 @@ cask "whatsapp"
 cask "zoom"
 mas "CrystalFetch", id: 6454431289
 mas "Things", id: 904280696
-
 go "github.com/bootdotdev/bootdev"
