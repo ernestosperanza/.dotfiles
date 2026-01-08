@@ -100,8 +100,6 @@ Here are some tricks to make your Aerospace experience even more... spacious.
 This guide is not exhaustive. There are other, more specific guides in the `docs/` directory:
 
 *   [**Future Explorations**](./docs/future-explorations.md): A list of interesting tools to check out later.
-*   [**Keyboard Manual**](./docs/keyboard.md): For the Mistel 770 BT keyboard.
 *   [**SSH with YubiKey**](./docs/ssh-yubikey.md): For the security-conscious.
-*   [**Outdated Docs**](./docs/Docs.md): An older doc with some shortcuts. It might be outdated, but it's here for historical purposes.
 
 So long, and thanks for all the fish!
