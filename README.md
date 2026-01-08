@@ -31,13 +31,14 @@ So, you have a new, shiny Mac. It's beautiful, it's empty, and it's blissfully u
 
 ## What's In The Bag?
 
-This setup comes with a few choice pieces of software, pre-configured for your convenience:
+This setup comes with a few choice pieces of software, pre-configured for your convenience. The goal is a highly efficient, keyboard-driven environment.
 
-*   **Zsh & Powerlevel10k**: A shell that's both powerful and pretty.
-*   **Neovim**: The editor of the gods, or at least, of people who enjoy modal editing.
+*   **A Souped-Up Shell (Zsh, Powerlevel10k, eza)**: The shell is your starship's cockpit. This setup uses Zsh, made beautiful and informative by Powerlevel10k, with `eza` as a modern replacement for `ls`.
+*   **Neovim**: The editor of the gods, configured with `kickstart.nvim` as a solid foundation. It's ready to be extended with all the plugins your heart desires.
 *   **Aerospace**: A tiling window manager for macOS that will make you feel like you're flying a spaceship.
-*   **Karabiner-Elements**: For remapping your keyboard to do your bidding.
-*   **And much more...** explore the `Brewfile` to see the full list.
+*   **Karabiner-Elements**: For remapping your keyboard to do your bidding, a crucial component for a keyboard-centric workflow.
+*   **Stow**: To manage all these dotfiles with clean symbolic links, keeping your home directory from looking like a Vogon construction site.
+*   **And much more...** explore the `Brewfile` to see the full list of tools and applications.
 
 ## On Documentation
 
