@@ -1,4 +1,6 @@
-# Setup docs
+# Outdated Docs
+
+**NOTE: This document may be outdated. Please refer to the main [README.md](../README.md) for the most current information.**
 
 ## Chrome shortcuts
 
