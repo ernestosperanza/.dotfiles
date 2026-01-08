@@ -1,50 +1,59 @@
-# Guía de Setup: YubiKey SSH (ed25519-sk)
+# A Hitchhiker's Guide to YubiKey and SSH
 
-Notas para configurar autenticación SSH con hardware key (FIDO2) en macOS.
+So, you want to traverse the digital galaxy securely? Excellent choice. Using a YubiKey for SSH is like having a Vogon guard for your private data, but one that's actually on your side.
 
-## 1. Verificar Entorno (OpenSSH)
-Es necesario usar `openssh` de Homebrew (el nativo de macOS no soporta bien FIDO).
+This guide assumes you have a YubiKey, a Mac, and a healthy dose of skepticism about password-only security.
+
+## 1. Check Your Tools
+
+Before we begin, you need to make sure you're using the right version of OpenSSH. The one that comes with macOS is, shall we say, a bit... provincial. It doesn't fully appreciate the beauty of FIDO2.
 
 ```bash
 which ssh-keygen
-# Resultado esperado: /opt/homebrew/opt/openssh/bin/ssh-keygen
+# Expected output: /opt/homebrew/opt/openssh/bin/ssh-keygen
 ```
 
-Si el resultado es `/usr/bin/ssh-keygen`, configurar el PATH en `~/.zshrc`:
+If you see `/usr/bin/ssh-keygen`, it means you're using the boring, native version. Don't panic. Just tell your Zsh shell to look in the right place by adding this to your `~/.zshrc`:
 
 ```bash
 export PATH="/opt/homebrew/opt/openssh/bin:$PATH"
 ```
 
-## 2. Generar la Clave (Residente + PIN)
-Este comando guarda el handle en la YubiKey (`-O resident`) y fuerza el uso del PIN (`-O verify-required`).
+## 2. Generate the Key (and lock it down)
+
+Now, let's create a key that lives on your YubiKey. This is a "resident" key, meaning the YubiKey itself holds a reference to it. We'll also require a PIN for every use, because we're paranoid like that.
 
 ```bash
-ssh-keygen -t ed25519-sk -O resident -O verify-required -C "ernestosperanza@gmail.com"
+ssh-keygen -t ed25519-sk -O resident -O verify-required -C "your_email@example.com"
 ```
 
-## 3. Configuración SSH
-Editar el archivo `~/.ssh/config`.
-**Nota:** `AddKeysToAgent no` es obligatorio para evitar conflictos con el agente nativo de macOS al pedir el PIN.
+## 3. Configure Your Ship's Computer (SSH)
+
+Your SSH client needs to know about this new key. Edit your `~/.ssh/config` file. The `AddKeysToAgent no` part is crucial. It tells the native macOS agent to back off and let the YubiKey do its thing, especially when it comes to asking for your PIN.
 
 ```ssh
 Host *
   IgnoreUnknown UseKeychain
   AddKeysToAgent no
   IdentityFile ~/.ssh/id_ed25519_sk
-  IdentityFile ~/.ssh/id_ed25519_sk_backup
 ```
 
-## 4. Agregar Clave Pública a GitHub
-Copiar la clave al portapapeles para pegarla en GitHub Settings:
+## 4. Present Your Credentials to the Galactic Authorities (GitHub)
+
+Now, you need to tell GitHub (and any other service) about your new public key. This command copies it to your clipboard.
 
 ```bash
 cat ~/.ssh/id_ed25519_sk.pub | pbcopy
 ```
 
-## 5. Troubleshooting
-Si el agente SSH se tranca (error "agent refused operation"), limpiar el caché:
+Go to your GitHub settings, find the "SSH and GPG keys" section, and paste it in.
+
+## 5. When Things Go Wrong (Troubleshooting)
+
+Sometimes, the SSH agent gets a bit confused and refuses to cooperate (you might see an "agent refused operation" error). When this happens, just give it a good old-fashioned memory wipe.
 
 ```bash
 ssh-add -D
 ```
+
+And that's it! You're now ready to navigate the galaxy with the confidence that only a hardware-backed key can provide.
