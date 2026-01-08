@@ -71,9 +71,18 @@ cmd-alt-ctrl-shift-t ="exec-and-forget osascript -e 'tell application \"iTerm\" 
 
 # --- REGLAS DE ASIGNACIÓN DE APPS ---
 
-# [1] PLANIFICACIÓN
+# [1] TODOs y Notas
 [[on-window-detected]]
 if.app-id = 'com.culturedcode.ThingsMac'
+run = "move-node-to-workspace 1"
+
+# Apple Notes: Documentación y apuntes
+[[on-window-detected]]
+if.app-id = 'com.apple.Notes'
+run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
 run = "move-node-to-workspace 1"
 
 # [2] DESARROLLO
@@ -94,10 +103,6 @@ if.window-title-regex-substring = 'Trabajo'
 run = "move-node-to-workspace 4"
 
 # [4] HERRAMIENTAS DE SOPORTE & REF
-# Apple Notes: Documentación y apuntes
-[[on-window-detected]]
-if.app-id = 'com.apple.Notes'
-run = "move-node-to-workspace 4"
 
 # Preview: Para leer PDFs sin tapar el código
 [[on-window-detected]]

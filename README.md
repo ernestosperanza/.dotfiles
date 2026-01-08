@@ -4,7 +4,7 @@
 
 You've stumbled upon a collection of dotfiles, a personal project that's grown into a sprawling, yet surprisingly organized, ecosystem for a Mac. This guide is your towel for navigating this particular corner of the galaxy.
 
-## How to Bootstrap a New Mac (and not be sad)
+### How to Bootstrap a New Mac (and not be sad)
 
 So, you have a new, shiny Mac. It's beautiful, it's empty, and it's blissfully unaware of the chaos you're about to unleash upon it. Here's how to get it properly set up.
 
