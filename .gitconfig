@@ -15,3 +15,6 @@
     cm = commit 
 	sw = switch
     rh = reset HEAD
+
+[core]
+	excludesfile = ~/.dotfiles/.gitignore_global

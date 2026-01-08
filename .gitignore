@@ -1,2 +1,6 @@
 .DS_Store
 **/.DS_Store
+
+backup/
+*.log
+/.local/state/secrets_cache.sh

@@ -26,3 +26,7 @@ Brewfile
 
 scripts
 docs
+
+bootstrap.sh
+install/
+backup/

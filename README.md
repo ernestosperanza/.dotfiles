@@ -4,34 +4,25 @@
 
 You've stumbled upon a collection of dotfiles, a personal project that's grown into a sprawling, yet surprisingly organized, ecosystem for a Mac. This guide is your towel for navigating this particular corner of the galaxy.
 
-### How to Bootstrap a New Mac (and not be sad)
+### How to Bootstrap a New Mac (The Automated Way)
 
-So, you have a new, shiny Mac. It's beautiful, it's empty, and it's blissfully unaware of the chaos you're about to unleash upon it. Here's how to get it properly set up.
+This repository is now a fully automated bootstrap system. On a new, shiny Mac, just do the following:
 
-1.  **Install the Babel Fish of Compilers**: Apple's Command Line Tools are essential. Without them, you're just a frog trying to cross a busy intergalactic highway.
+1.  **Clone This Very Guide**: You need the map to navigate the maze.
     ```bash
-    xcode-select --install
+    git clone https://github.com/ernestosperanza/.dotfiles.git ~/.dotfiles
     ```
-2.  **Get the Universal Tool sharpener, Homebrew**: This is the tool that gets you the other tools.
+
+2.  **Engage the Infinite Improbability Drive**: This one command will handle everything from installing tools to configuring your system. Grab a cup of tea, this might take a few minutes.
     ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    cd ~/.dotfiles && ./bootstrap.sh
     ```
-3.  **Clone This Very Guide**: You need the map to navigate the maze. This command clones this repository into your home folder.
-    ```bash
-    git clone https://github.com/ernestosperanza/.dotfiles.git
-    ```
-4.  **Install Everything, All at Once**: Now for the magic. The `Brewfile` is your shopping list. This command installs everything on that list.
-    ```bash
-    brew bundle --file Brewfile
-    ```
-5.  **Put Everything in its Rightful Place**: `stow` is a clever little tool that creates symbolic links from this repository to your home directory. It's like having your cake and eating it too, but with config files.
-    ```bash
-    stow .
-    ```
+
+That's it. The script will guide you through the rest. For a more detailed explanation of what's happening, see the [**Comprehensive Setup Guide**](./docs/SETUP.md).
 
 ## What's In The Bag?
 
-This setup comes with a few choice pieces of software, pre-configured for your convenience. The goal is a highly efficient, keyboard-driven environment.
+This setup comes with a few choice pieces of software, pre-configured for your convenience. The goal is a highly efficient, keyboard-driven environment, now set up automatically by our bootstrap system.
 
 *   **A Souped-Up Shell (Zsh, Powerlevel10k, eza)**: The shell is your starship's cockpit. This setup uses Zsh, made beautiful and informative by Powerlevel10k, with `eza` as a modern replacement for `ls`.
 *   **Neovim**: The editor of the gods, configured with `kickstart.nvim` as a solid foundation. It's ready to be extended with all the plugins your heart desires.
@@ -47,5 +38,7 @@ This guide is not exhaustive. There are other, more specific guides in the `docs
 *   [**Pro-Tips for the Discerning Hitchhiker**](./docs/tips.md): A collection of useful tips and tricks.
 *   [**Future Explorations**](./docs/future-explorations.md): A list of interesting tools to check out later.
 *   [**SSH with YubiKey**](./docs/ssh-yubikey.md): For the security-conscious.
+*   [**The Bootstrap Setup Guide**](./docs/SETUP.md): A detailed look at how the bootstrap script works.
+*   [**The Secrets Workflow**](./docs/SECRETS_WORKFLOW.md): How to handle API tokens and other secrets in the future.
 
 So long, and thanks for all the fish!
