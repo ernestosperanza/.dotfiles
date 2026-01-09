@@ -42,14 +42,10 @@ check_internet_connectivity() {
     fi
 }
 
-install_xcode_clt() {
+check_xcode_clt() {
     log_info "Checking for Xcode Command Line Tools..."
     if ! xcode-select -p &> /dev/null; then
-        log_info "Xcode Command Line Tools not found. Installing..."
-        # This command is interactive, user will need to confirm in a dialog.
-        xcode-select --install
-        log_info "Please follow the prompts to install Xcode Command Line Tools. Rerun the bootstrap after installation completes."
-        exit 0 # Exit to allow user to complete interactive installation
+        log_error "Xcode Command Line Tools not found. Please install them first by running 'xcode-select --install' as per the README, then rerun this script."
     else
         log_info "Xcode Command Line Tools are already installed."
     fi
@@ -73,24 +69,12 @@ install_homebrew() {
     log_info "Homebrew updated and checked."
 }
 
-install_git() {
-    log_info "Checking for Git..."
-    if ! command -v git &> /dev/null; then
-        log_info "Git not found. Installing Git via Homebrew..."
-        brew install git
-        log_info "Git installed successfully."
-    else
-        log_info "Git is already installed."
-    fi
-}
-
 # --- Main Execution ---
 log_info "Starting Phase 00: Preflight Checks and Essential Tools Installation."
 
 check_macos_version
 check_internet_connectivity
-install_xcode_clt
+check_xcode_clt
 install_homebrew
-install_git
 
 log_info "Phase 00 completed: Essential tools are ready."

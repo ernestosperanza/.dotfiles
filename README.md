@@ -6,19 +6,33 @@ You've stumbled upon a collection of dotfiles, a personal project that's grown i
 
 ### How to Bootstrap a New Mac (The Automated Way)
 
-This repository is now a fully automated bootstrap system. On a new, shiny Mac, just do the following:
+This repository is now a fully automated bootstrap system. On a new, shiny Mac, follow these crucial steps to kickstart your journey:
 
-1.  **Clone This Very Guide**: You need the map to navigate the maze.
-    ```bash
-    git clone https://github.com/ernestosperanza/.dotfiles.git ~/.dotfiles
-    ```
+#### Step 0: Acquire Your Digital Towel (Install Command Line Tools)
 
-2.  **Engage the Infinite Improbability Drive**: This one command will handle everything from installing tools to configuring your system. Grab a cup of tea, this might take a few minutes.
-    ```bash
-    cd ~/.dotfiles && ./bootstrap.sh
-    ```
+Before you can even think about cloning this magnificent guide, you'll need `git`. And on a fresh Mac, `git` often plays hide-and-seek. Fear not! The `Xcode Command Line Tools` are your digital towel, providing `git` and other essential utilities for your terminal adventures.
 
-That's it. The script will guide you through the rest. For a more detailed explanation of what's happening, see the [**Comprehensive Setup Guide**](./docs/SETUP.md).
+Open your terminal and type this ancient incantation:
+```bash
+xcode-select --install
+```
+A mystical pop-up window will appear. Click "Install" and allow the cosmos (or Apple's servers) to deliver the necessary tools. This must be completed before you can proceed to the next, slightly less mystical, step.
+
+#### Step 1: Clone This Very Guide
+
+With your digital towel in hand (and `git` at your command), it's time to fetch the map to navigate the maze.
+```bash
+git clone https://github.com/ernestosperanza/.dotfiles.git ~/.dotfiles
+```
+
+#### Step 2: Engage the Infinite Improbability Drive
+
+Now for the grand finale! This single command will unleash a cascade of automation, installing all the latest tools (including an even fresher version of `git` via Homebrew, just for good measure) and meticulously configuring your system. Grab a cup of tea, a Pan Galactic Gargle Blaster, or just settle in – this might take a few minutes.
+```bash
+cd ~/.dotfiles && ./bootstrap.sh
+```
+
+That's it. The script will guide you through the rest. For a more detailed explanation of what's happening behind the scenes, consult the [**Comprehensive Setup Guide**](./docs/SETUP.md).
 
 ## What's In The Bag?
 
