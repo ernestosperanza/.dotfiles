@@ -33,15 +33,6 @@ check_macos_version() {
     fi
 }
 
-check_internet_connectivity() {
-    log_info "Checking internet connectivity..."
-    if curl -s --head --request GET "https://google.com" | grep "200 OK" > /dev/null; then
-        log_info "Internet connectivity check passed."
-    else
-        log_error "Internet connectivity check failed. Please ensure you have an active internet connection."
-    fi
-}
-
 check_xcode_clt() {
     log_info "Checking for Xcode Command Line Tools..."
     if ! xcode-select -p &> /dev/null; then
@@ -73,7 +64,6 @@ install_homebrew() {
 log_info "Starting Phase 00: Preflight Checks and Essential Tools Installation."
 
 check_macos_version
-check_internet_connectivity
 check_xcode_clt
 install_homebrew
 
