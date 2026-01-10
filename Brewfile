@@ -1,5 +1,4 @@
 tap "mediosz/tap"
-tap "nikitabobko/tap"
 brew "cmake"
 brew "cocoapods"
 brew "eza"
