@@ -73,8 +73,9 @@ install_homebrew() {
         log_info "Homebrew seems to be already configured in ${zprofile_path}."
     fi
 
-    log_info "Updating Homebrew and running doctor..."
+    log_info "Updating Homebrew, upgrading the brew command itself, and running doctor..."
     brew update
+    brew upgrade brew
     brew doctor
     log_info "Homebrew updated and checked."
 }
