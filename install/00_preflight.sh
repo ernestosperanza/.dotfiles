@@ -32,14 +32,25 @@ install_homebrew() {
     log_info "Checking for Homebrew..."
     if ! command -v brew &> /dev/null; then
         log_info "Homebrew not found. Installing Homebrew..."
-        # Run the official installer
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         log_info "Homebrew installed."
+
+        # After installation, brew is not in the PATH. We need to eval it manually once.
+        # We check both possible installation paths for Apple Silicon and Intel.
+        if [[ -x "/opt/homebrew/bin/brew" ]]; then
+             log_info "Temporarily setting up environment from /opt/homebrew..."
+             eval "$(/opt/homebrew/bin/brew shellenv)"
+        elif [[ -x "/usr/local/bin/brew" ]]; then
+             log_info "Temporarily setting up environment from /usr/local..."
+             eval "$(/usr/local/bin/brew shellenv)"
+        else
+             log_error "Could not find brew executable after installation."
+        fi
     else
         log_info "Homebrew is already installed."
     fi
 
-    # Determine Homebrew prefix and configure shell
+    # By this point, 'brew' should be in the PATH for the current session.
     log_info "Configuring shell environment for Homebrew..."
     local brew_prefix
     brew_prefix=$(brew --prefix)
@@ -47,20 +58,19 @@ install_homebrew() {
     if [ -z "$brew_prefix" ]; then
         log_error "Could not determine Homebrew prefix. Aborting."
     fi
-
-    # Add Homebrew to the current session's PATH
-    eval "$("$brew_prefix/bin/brew" shellenv)"
-
-    # Add Homebrew to .zprofile to make it available in future sessions
-    local zprofile_path="${HOME}/.zprofile"
-    local shellenv_command='eval "$($(brew --prefix)/bin/brew shellenv)"'
     
-    if ! grep -q "$shellenv_command" "$zprofile_path" 2>/dev/null; then
-        log_info "Adding Homebrew to ${zprofile_path} for future sessions..."
+    # Add Homebrew to .zprofile to make it available in future Zsh sessions
+    local zprofile_path="${HOME}/.zprofile"
+    # Explicitly generate the command for zsh, as this is the user's login shell.
+    local zsh_shellenv_command='eval "$($(brew --prefix)/bin/brew shellenv zsh)"'
+    
+    # Use a more general grep to avoid adding duplicates if a similar line already exists.
+    if ! grep -q "brew shellenv" "$zprofile_path" 2>/dev/null; then
+        log_info "Adding Homebrew to ${zprofile_path} for future Zsh sessions..."
         echo -e "\n# Homebrew" >> "$zprofile_path"
-        echo "$shellenv_command" >> "$zprofile_path"
+        echo "$zsh_shellenv_command" >> "$zprofile_path"
     else
-        log_info "Homebrew is already configured in ${zprofile_path}."
+        log_info "Homebrew seems to be already configured in ${zprofile_path}."
     fi
 
     log_info "Updating Homebrew and running doctor..."
