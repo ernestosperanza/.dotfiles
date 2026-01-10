@@ -1,3 +1,5 @@
+tap "homebrew/cask"
+tap "nikitabobko/tap"
 tap "mediosz/tap"
 brew "cmake"
 brew "cocoapods"
