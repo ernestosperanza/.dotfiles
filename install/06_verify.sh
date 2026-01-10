@@ -7,19 +7,6 @@ set -euo pipefail
 # --- Configuration ---
 TARGET_DOTFILES_DIR="${HOME}/.dotfiles"
 
-# --- Helper Functions ---
-log_info() {
-    echo "INFO: $1"
-}
-
-log_warn() {
-    echo "WARN: $1" >&2
-}
-
-log_error() {
-    echo "ERROR: $1" >&2
-    exit 1
-}
 
 # --- Main Execution ---
 log_info "Starting Phase 06: Post-Installation Verification."

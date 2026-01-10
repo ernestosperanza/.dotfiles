@@ -7,19 +7,6 @@ set -euo pipefail
 # --- Configuration ---
 TARGET_DOTFILES_DIR="${HOME}/.dotfiles"
 
-# --- Helper Functions ---
-log_info() {
-    echo "INFO: $1"
-}
-
-log_warn() {
-    echo "WARN: $1" >&2
-}
-
-log_error() {
-    echo "ERROR: $1" >&2
-    exit 1
-}
 
 # --- Main Execution ---
 log_info "Starting Phase 05: Application Specific Setup."
@@ -85,20 +72,6 @@ log_info "Refer to your Raycast preferences for importing / exporting extensions
 log_info "Consider using Raycast's built-in 'Sync' feature or a custom Raycast import script if available."
 
 
-# 5. VSCode Configuration (Extensions are handled by Brewfile)
-log_info "Configuring VSCode settings..."
-VSCODE_CONFIG_DIR="${HOME}/.config/vscode"
-VSCODE_SETTINGS_FILE="${VSCODE_CONFIG_DIR}/settings.json"
 
-if command -v code &> /dev/null; then
-    if [[ -L "$VSCODE_SETTINGS_FILE" && -f "$VSCODE_SETTINGS_FILE" ]]; then
-        log_info "VSCode settings symlink detected. Settings should apply on next VSCode launch."
-        log_info "You might consider using VSCode's built-in 'Settings Sync' feature for ongoing synchronization."
-    else
-        log_warn "VSCode settings not found or not symlinked. Ensure ~/.config/vscode points to your dotfiles."
-    fi
-else
-    log_warn "VSCode CLI (code) not found. Please ensure VSCode is installed."
-fi
 
 log_info "Phase 05 completed: Application specific configurations applied (or noted for manual action)."
