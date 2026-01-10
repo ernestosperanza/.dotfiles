@@ -8,19 +8,6 @@ set -euo pipefail
 TARGET_DIR="${HOME}/.dotfiles"
 BREWFILE_PATH="${TARGET_DIR}/Brewfile"
 
-# --- Helper Functions ---
-log_info() {
-    echo "INFO: $1"
-}
-
-log_warn() {
-    echo "WARN: $1" >&2
-}
-
-log_error() {
-    echo "ERROR: $1" >&2
-    exit 1
-}
 
 # --- Main Execution ---
 log_info "Starting Phase 01: Package Installation."

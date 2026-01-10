@@ -8,20 +8,6 @@ set -euo pipefail
 MIN_MACOS_VERSION="13.0" # Ventura+ as per plan
 TARGET_DIR="${HOME}/.dotfiles"
 
-# --- Helper Functions ---
-
-log_info() {
-    echo "INFO: $1"
-}
-
-log_warn() {
-    echo "WARN: $1" >&2
-}
-
-log_error() {
-    echo "ERROR: $1" >&2
-    exit 1
-}
 
 check_macos_version() {
     log_info "Verifying macOS version (Ventura or newer)..."
@@ -46,12 +32,35 @@ install_homebrew() {
     log_info "Checking for Homebrew..."
     if ! command -v brew &> /dev/null; then
         log_info "Homebrew not found. Installing Homebrew..."
+        # Run the official installer
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        # Ensure Homebrew is in PATH for subsequent commands in this script
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-        log_info "Homebrew installed successfully."
+        log_info "Homebrew installed."
     else
         log_info "Homebrew is already installed."
+    fi
+
+    # Determine Homebrew prefix and configure shell
+    log_info "Configuring shell environment for Homebrew..."
+    local brew_prefix
+    brew_prefix=$(brew --prefix)
+
+    if [ -z "$brew_prefix" ]; then
+        log_error "Could not determine Homebrew prefix. Aborting."
+    fi
+
+    # Add Homebrew to the current session's PATH
+    eval "$("$brew_prefix/bin/brew" shellenv)"
+
+    # Add Homebrew to .zprofile to make it available in future sessions
+    local zprofile_path="${HOME}/.zprofile"
+    local shellenv_command='eval "$($(brew --prefix)/bin/brew shellenv)"'
+    
+    if ! grep -q "$shellenv_command" "$zprofile_path" 2>/dev/null; then
+        log_info "Adding Homebrew to ${zprofile_path} for future sessions..."
+        echo -e "\n# Homebrew" >> "$zprofile_path"
+        echo "$shellenv_command" >> "$zprofile_path"
+    else
+        log_info "Homebrew is already configured in ${zprofile_path}."
     fi
 
     log_info "Updating Homebrew and running doctor..."

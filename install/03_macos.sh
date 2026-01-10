@@ -7,19 +7,6 @@ set -euo pipefail
 # --- Configuration ---
 MACOS_DEFAULTS_SCRIPT="${HOME}/.dotfiles/.macos"
 
-# --- Helper Functions ---
-log_info() {
-    echo "INFO: $1"
-}
-
-log_warn() {
-    echo "WARN: $1" >&2
-}
-
-log_error() {
-    echo "ERROR: $1" >&2
-    exit 1
-}
 
 # --- Main Execution ---
 log_info "Starting Phase 03: macOS Defaults Configuration."

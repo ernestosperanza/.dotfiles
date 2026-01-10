@@ -35,6 +35,9 @@ log_error() {
     exit 1
 }
 
+# Export functions so they are available to sourced phase scripts
+export -f log_info log_warn log_error
+
 # --- Argument Parsing ---
 parse_args() {
     while [[ "$#" -gt 0 ]]; do
@@ -84,10 +87,12 @@ execute_phase() {
         log_info "[DRY RUN] Would execute: ${phase_script}"
     else
         log_info "Executing: ${phase_script}"
-        "$phase_script"
-        if [[ "$?" -ne 0 ]]; then # Check the exit code of the executed script
-            log_error "Phase ${phase_number} (${phase_name}) failed. Aborting bootstrap."
-        fi
+        # We use 'source' to ensure that any environment variable changes
+        # (like PATH modifications from installing Homebrew)
+        # persist in the main script for subsequent phases.
+        # Since 'set -e' is active, the script will automatically
+        # exit if any command in the sourced script fails.
+        source "$phase_script"
     fi
 
     log_info "--- Phase ${phase_number} completed. ---"
