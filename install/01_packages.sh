@@ -26,7 +26,7 @@ log_info "Running 'brew bundle' to install packages, casks, and MAS apps from Br
 # The --no-upgrade flag prevents re-downloading/re-installing if already present,
 # which helps with idempotency and speed on subsequent runs.
 # The --no-lock flag prevents writing a Brewfile.lock, which is generally good for dotfiles.
-brew bundle --file="$BREWFILE_PATH"
+brew bundle --file="$BREWFILE_PATH" --verbose
 
 log_info "Running 'brew cleanup' to remove old versions and downloads..."
 brew cleanup
