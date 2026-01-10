@@ -58,21 +58,33 @@ parse_args() {
     done
 }
 
-# --- Phase Execution ---
-execute_phase() {
-    local phase_name="$1"
-    local phase_script="${INSTALL_DIR}/${phase_name}.sh"
-    local phase_number=$(echo "$phase_name" | cut -d'_' -f1)
+# --- Main Execution ---
 
-    log_info "--- Executing Phase ${phase_number}: ${phase_name//_/-} ---"
+# Ensure log directory exists
+mkdir -p "$(dirname "$LOG_FILE")"
+
+log_info "Starting dotfiles bootstrap process."
+
+parse_args "$@"
+
+for phase in "${PHASES[@]}"; do
+    phase_script="${INSTALL_DIR}/${phase}.sh"
+    phase_number=$(echo "$phase" | cut -d'_' -f1)
+
+    log_info "--- Executing Phase ${phase_number}: ${phase//_/-} ---"
 
     # Check if phase should be skipped
+    should_skip=false
     for skipped in $SKIPPED_PHASES; do
         if [[ "$phase_number" == "$skipped" ]]; then
             log_info "Skipping phase ${phase_number} as requested."
-            return 0
+            should_skip=true
+            break
         fi
     done
+    if [[ "$should_skip" == true ]]; then
+        continue
+    fi
 
     # Check if script exists and is executable
     if [[ ! -f "$phase_script" ]]; then
@@ -96,19 +108,6 @@ execute_phase() {
     fi
 
     log_info "--- Phase ${phase_number} completed. ---"
-}
-
-# --- Main Execution ---
-
-# Ensure log directory exists
-mkdir -p "$(dirname "$LOG_FILE")"
-
-log_info "Starting dotfiles bootstrap process."
-
-parse_args "$@"
-
-for phase in "${PHASES[@]}"; do
-    execute_phase "$phase"
 done
 
 log_info "Dotfiles bootstrap process completed."
