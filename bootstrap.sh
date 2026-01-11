@@ -50,6 +50,11 @@ parse_args() {
                 SKIPPED_PHASES=$(echo "$1" | cut -d'=' -f2 | tr ',' ' ') # Replace commas with spaces for easy matching
                 log_info "Skipping phases: ${SKIPPED_PHASES}"
                 ;;
+            --skip-mas)
+                log_info "Skipping Mac App Store apps installation (for VM or no-login environments)."
+                # This env var is read by 'brew bundle'
+                export HOMEBREW_BUNDLE_MAS_SKIP=1
+                ;;
             *)
                 log_error "Unknown argument: $1"
                 ;;
