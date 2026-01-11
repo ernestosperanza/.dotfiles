@@ -23,10 +23,7 @@ if [[ ! -f "$BREWFILE_PATH" ]]; then
 fi
 
 log_info "Running 'brew bundle' to install packages, casks, and MAS apps from Brewfile..."
-# The --no-upgrade flag prevents re-downloading/re-installing if already present,
-# which helps with idempotency and speed on subsequent runs.
-# The --no-lock flag prevents writing a Brewfile.lock, which is generally good for dotfiles.
-brew bundle --file="$BREWFILE_PATH" --verbose
+brew bundle --file="$BREWFILE_PATH" --verbose || true
 
 log_info "Running 'brew cleanup' to remove old versions and downloads..."
 brew cleanup

@@ -50,11 +50,6 @@ parse_args() {
                 SKIPPED_PHASES=$(echo "$1" | cut -d'=' -f2 | tr ',' ' ') # Replace commas with spaces for easy matching
                 log_info "Skipping phases: ${SKIPPED_PHASES}"
                 ;;
-            --skip-mas)
-                log_info "Skipping Mac App Store apps installation (for VM or no-login environments)."
-                # This env var is read by 'brew bundle'
-                export HOMEBREW_BUNDLE_MAS_SKIP=1
-                ;;
             *)
                 log_error "Unknown argument: $1"
                 ;;
@@ -104,11 +99,7 @@ for phase in "${PHASES[@]}"; do
         log_info "[DRY RUN] Would execute: ${phase_script}"
     else
         log_info "Executing: ${phase_script}"
-        # We use 'source' to ensure that any environment variable changes
-        # (like PATH modifications from installing Homebrew)
-        # persist in the main script for subsequent phases.
-        # Since 'set -e' is active, the script will automatically
-        # exit if any command in the sourced script fails.
+        # Source the phase script to execute it in the current shell and maintain environment changes.
         source "$phase_script"
     fi
 

@@ -18,6 +18,12 @@ xcode-select --install
 ```
 A mystical pop-up window will appear. Click "Install" and allow the cosmos (or Apple's servers) to deliver the necessary tools. This must be completed before you can proceed to the next, slightly less mystical, step.
 
+#### Pre-flight Checklist: Log in to Apple ID for Mac App Store
+
+To install applications directly from the Mac App Store (handled by `mas` via `brew bundle`), you must be logged into your Apple ID. This is an interactive process that cannot be automated by this script.
+
+Open the App Store application (found in your Applications folder or via Spotlight, or by searching for "App Store") and log in with your Apple ID. Close the App Store app once logged in.
+
 #### Step 1: Clone This Very Guide
 
 With your digital towel in hand (and `git` at your command), it's time to fetch the map to navigate the maze.

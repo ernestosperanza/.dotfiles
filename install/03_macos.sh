@@ -13,7 +13,7 @@ log_info "Starting Phase 03: macOS Defaults Configuration."
 
 # 1. Check for the .macos script
 if [[ ! -f "$MACOS_DEFAULTS_SCRIPT" ]]; then
-    log_error "macOS defaults script not found at ${MACOS_DEFAULTS_SCRIPT}. This script needs to be created."
+    log_error "macOS defaults script not found at ${MACOS_DEFAULTS_SCRIPT}. Please ensure this file exists and contains your desired macOS defaults."
 fi
 
 if [[ ! -x "$MACOS_DEFAULTS_SCRIPT" ]]; then
