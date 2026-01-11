@@ -26,3 +26,8 @@ Brewfile
 
 scripts
 docs
+
+README.md
+.pre-commit-config.yaml
+Brewfile.save
+.stow-local-ignore
