@@ -60,3 +60,19 @@ Here are some handy `brew` commands to keep in your towel.
     ```bash
     brew bundle install
     ```
+
+## Stow Your Gear
+
+`stow` is the lovely bit of kit that keeps your home directory from looking like a Vogon construction site. It manages your config files by linking them from your `.dotfiles` directory to their proper homes.
+
+*   **Put Everything in its Rightful Place**: To create all the symbolic links and deploy your configurations:
+    ```bash
+    # Run from the root of the .dotfiles repository
+    stow .
+    ```
+
+*   **Disengage the Tractor Beam**: If you need to undo the linking, `stow` can clean up after itself. This removes the symlinks but leaves your precious source files in the repo untouched.
+    ```bash
+    # Run from the root of the .dotfiles repository
+    stow -D .
+    ```
