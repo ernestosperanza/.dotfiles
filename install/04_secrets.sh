@@ -11,12 +11,19 @@ GENERATE_SECRETS_SCRIPT="${HOME}/.dotfiles/scripts/generate-secrets.sh"
 # --- Main Execution ---
 log_info "Starting Phase 04: 1Password Secrets Management."
 
-# 1. Check if 1Password CLI (op) is installed
+# 1. Prepare 1Password config directory
+OP_CONFIG_DIR="${HOME}/.config/op"
+log_info "Ensuring 1Password config directory exists and has correct permissions..."
+mkdir -p "$OP_CONFIG_DIR"
+chmod 700 "$OP_CONFIG_DIR"
+log_info "Permissions for ${OP_CONFIG_DIR} set to 700."
+
+# 2. Check if 1Password CLI (op) is installed
 if ! command -v op &> /dev/null; then
     log_error "1Password CLI ('op') is not installed. Please ensure it's in your Brewfile and 01_packages.sh was run."
 fi
 
-# 2. Authenticate 1Password CLI (if not already)
+# 3. Authenticate 1Password CLI (if not already)
 log_info "Checking 1Password CLI authentication status..."
 if ! op whoami &> /dev/null; then
     log_info "1Password CLI not authenticated. Please sign in now."
