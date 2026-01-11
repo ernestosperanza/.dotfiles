@@ -16,6 +16,11 @@ So, you have a new, shiny Mac. It's beautiful, it's empty, and it's blissfully u
     ```bash
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
+    > **Note**: After installing, Homebrew might not be in your PATH. Run the following commands to add it, then restart your terminal.
+    > ```bash
+    > echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+    > eval "$(/opt/homebrew/bin/brew shellenv)"
+    > ```
 3.  **Clone This Very Guide**: You need the map to navigate the maze. This command clones this repository into your home folder.
     ```bash
     git clone https://github.com/ernestosperanza/.dotfiles.git
@@ -39,6 +44,25 @@ This setup comes with a few choice pieces of software, pre-configured for your c
 *   **Karabiner-Elements**: For remapping your keyboard to do your bidding, a crucial component for a keyboard-centric workflow.
 *   **Stow**: To manage all these dotfiles with clean symbolic links, keeping your home directory from looking like a Vogon construction site.
 *   **And much more...** explore the `Brewfile` to see the full list of tools and applications.
+
+## Custom Scripts & Utilities
+
+This repository contains scripts to automate common tasks, usually found in the `scripts/` directory.
+
+### `scripts/setup_dock.sh` - The Infinite Improbability Dock
+
+This script arranges your macOS Dock into a specific, predefined configuration. It's perfect for quickly restoring order to the chaotic universe of application icons.
+
+*   **What it does**: It politely asks all current applications to leave the Dock, then invites a select few (like Safari, iTerm, etc.) to take their place in a neat line.
+*   **How to Use**:
+    ```bash
+    # First, grant it the ability to do things (only needed once)
+    chmod +x ~/.dotfiles/scripts/setup_dock.sh
+
+    # Then, run it to rearrange the Dock to your liking
+    ~/.dotfiles/scripts/setup_dock.sh
+    ```
+*   **Customization**: Feel free to edit the script to change the guest list. The list of applications is a simple array inside the file.
 
 ## On Documentation
 
