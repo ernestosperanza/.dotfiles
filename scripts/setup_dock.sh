@@ -15,8 +15,8 @@ echo "Adding your applications to the Dock..."
 dockutil --add '/System/Applications/System Settings.app' --no-restart
 
 # Other Applications
-dockutil --add '/Applications/iTerm.app' --no-restart       # Could also be '/Applications/iTerm2.app'
-dockutil --add '/Applications/Things3.app' --no-restart # CORRECTED: It's now Things3.app
+dockutil --add '/Applications/iTerm.app' --no-restart 
+dockutil --add '/Applications/Things3.app' --no-restart
 dockutil --add '/Applications/Google Chrome.app' --no-restart
 dockutil --add '/Applications/Obsidian.app' --no-restart
 dockutil --add '/Applications/WhatsApp.app' --no-restart
