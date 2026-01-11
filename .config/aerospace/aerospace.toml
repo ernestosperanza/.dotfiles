@@ -119,11 +119,6 @@ run = "move-node-to-workspace 4"
 if.app-id = 'com.postmanlabs.mac'
 run = "move-node-to-workspace 4"
 
-# TablePlus / DB Tools (ajusta el ID si usas otro)
-[[on-window-detected]]
-if.app-id = 'com.tinyapp.TablePlus'
-run = "move-node-to-workspace 4"
-
 # [5] COMUNICACIÓN (TRABAJO)
 # Slack
 [[on-window-detected]]
