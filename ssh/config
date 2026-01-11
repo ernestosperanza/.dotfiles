@@ -4,4 +4,3 @@ Host *
   IdentityFile ~/.ssh/id_ed25519_sk
   IdentityFile ~/.ssh/id_ed25519_sk_backup
   IdentityFile ~/.ssh/id_ed25519_sk_backup_2
-  IdentityFile ~/.ssh/id_ed25519
